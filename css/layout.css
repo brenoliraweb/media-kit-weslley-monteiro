@@ -1,0 +1,991 @@
+/* ==========================================================================
+   Media Kit · Weslley Monteiro
+   layout.css: container, grid, seções e breakpoints (1024px e 760px)
+   ========================================================================== */
+
+/* Container e grid
+   ========================================================================== */
+
+.container {
+  box-sizing: content-box;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--pad-lateral);
+}
+
+.so-mobile,
+.topo-ano {
+  display: none;
+}
+
+/* Seções
+   ========================================================================== */
+
+.secao {
+  padding-top: var(--espaco-secao);
+}
+
+.secao--escura,
+.secao--areia {
+  margin-top: var(--espaco-secao);
+  padding-bottom: var(--espaco-secao);
+}
+
+.secao--escura {
+  background: var(--preto);
+  color: var(--off-white);
+}
+
+.secao--areia {
+  background: var(--areia);
+}
+
+/* Barra fina que abre cada seção */
+.barra-secao {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  font-family: var(--font-texto);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+/* Linha superior como pseudo-elemento, para poder ser desenhada (animacoes.css) */
+.barra-secao::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--cor-linha, var(--preto));
+  transform-origin: left;
+}
+
+.barra-secao span:last-child {
+  color: var(--texto-sec);
+  text-align: right;
+}
+
+.secao .titulo {
+  margin-top: 48px;
+}
+
+/* Topo
+   ========================================================================== */
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--off-white);
+}
+
+.topo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--preto);
+  transform-origin: left;
+}
+
+/* Âncoras do menu não ficam atrás do topo fixo */
+main [id] {
+  scroll-margin-top: 64px;
+}
+
+.topo-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  min-height: 56px;
+}
+
+.topo-kit {
+  text-align: right;
+}
+
+.topo-nav ul {
+  display: flex;
+  gap: 4px;
+}
+
+.topo-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+/* 01 · Capa
+   ========================================================================== */
+
+.capa {
+  padding-top: 40px;
+}
+
+.nome {
+  font-family: var(--font-forte);
+  font-weight: 400;
+  font-size: clamp(64px, 12vw, 176px);
+  line-height: .92;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.nome-delicada {
+  font-family: var(--font-delicada);
+  font-weight: 200;
+  letter-spacing: .01em;
+}
+
+.capa-faixa {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  margin-top: 28px;
+  position: relative;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--areia);
+}
+
+.capa-faixa::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--preto);
+  transform-origin: left;
+}
+
+.capa-faixa-papel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Traço oliva antes de "Modelo e artista" */
+.capa-faixa-papel::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 2px;
+  background: var(--oliva);
+}
+
+.capa-faixa-meio {
+  color: var(--texto-sec);
+}
+
+.capa-faixa-local {
+  text-align: right;
+}
+
+.capa-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  margin-top: 48px;
+}
+
+.capa-esq {
+  grid-column: 1 / span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.capa-foto {
+  grid-column: 4 / span 6;
+}
+
+.foto--capa {
+  aspect-ratio: 3 / 4;
+}
+
+.capa-dir {
+  grid-column: 10 / span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  text-align: right;
+}
+
+.capa-seguidores .legenda,
+.capa-engajamento .legenda {
+  margin-top: 8px;
+}
+
+.capa-apoio {
+  font-size: 14px;
+}
+
+.capa-especial {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.capa-especial-titulo {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* 02 · Sobre mim
+   ========================================================================== */
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: 56px;
+  margin-top: 64px;
+  align-items: start;
+}
+
+.sobre-frase {
+  grid-column: 6 / -1;
+  grid-row: 1;
+}
+
+.sobre-fotos {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 3;
+}
+
+.sobre-foto-perfil {
+  display: none;
+}
+
+.sobre-textos {
+  grid-column: 6 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+/* Capitular em Anton */
+.bio::first-letter {
+  float: left;
+  margin: 6px 12px 0 0;
+  font-family: var(--font-forte);
+  font-weight: 400;
+  font-size: 72px;
+  line-height: .8;
+  color: var(--preto);
+}
+
+.sobre-lista {
+  grid-column: 6 / -1;
+  grid-row: 3;
+  border-bottom: 1px solid var(--areia);
+}
+
+.sobre-lista-item {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: var(--gutter);
+  padding: 20px 0;
+  border-top: 1px solid var(--areia);
+}
+
+.sobre-lista-item > dt {
+  padding-top: 4px;
+}
+
+.medidas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.medidas div {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.medidas dt {
+  font-size: 14px;
+  color: var(--texto-sec);
+}
+
+.medidas dd {
+  font-family: var(--font-destaque);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+/* 03 · Ensaio fotográfico
+   ========================================================================== */
+
+.ensaio-galeria {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: 96px;
+  align-items: start;
+  margin-top: 72px;
+}
+
+.ensaio-01 { grid-column: 1 / span 7; }
+.ensaio-02 { grid-column: 9 / span 4; margin-top: 200px; }
+.ensaio-03 { grid-column: 2 / span 4; }
+.ensaio-04 { grid-column: 7 / span 6; margin-top: 120px; }
+.ensaio-05 { grid-column: 1 / -1; }
+
+.ensaio-03 img { object-position: center 30%; }
+.ensaio-04 img { object-position: center 22%; }
+
+.ensaio-sequencia {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* 04 · Números e resultados
+   ========================================================================== */
+
+.numeros .barra-secao {
+  --cor-linha: var(--off-white);
+}
+
+.numeros .barra-secao span:last-child,
+.numeros .legenda,
+.numeros-fonte {
+  color: var(--texto-sec-escuro);
+}
+
+.numeros-lista {
+  margin-top: 72px;
+  border-bottom: 1px solid var(--linha-escuro);
+}
+
+.numeros-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--linha-escuro);
+}
+
+.numeros-item dd {
+  order: 1;
+}
+
+.numeros-item dt {
+  order: 2;
+  text-align: right;
+}
+
+.numeros-fonte {
+  margin-top: 24px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* 05 · Marcas e parcerias
+   ========================================================================== */
+
+.marcas .barra-secao span:last-child {
+  color: var(--texto-sec);
+}
+
+.marcas-cabecalho {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: end;
+}
+
+.marcas-cabecalho .titulo {
+  grid-column: 1 / span 8;
+}
+
+.marcas-intro {
+  grid-column: 9 / -1;
+}
+
+.marcas-lista {
+  margin-top: 72px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.marcas-lista li {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--gutter);
+  padding: 16px 0;
+  border-top: 1px solid var(--linha);
+}
+
+.marcas-num {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--texto-sec);
+}
+
+.marcas-nome {
+  font-family: var(--font-delicada);
+  font-weight: 300;
+  font-size: clamp(36px, 6.4vw, 96px);
+  line-height: 1;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+
+.marcas-logo {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--texto-sec);
+}
+
+/* 06 · Trabalhos e campanhas
+   ========================================================================== */
+
+.trabalhos {
+  padding-bottom: 20px; /* 140px até o Contato */
+}
+
+.trabalhos-galeria {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: 64px;
+  align-items: start;
+  margin-top: 72px;
+}
+
+.trabalho-01 { grid-column: 1 / span 6; grid-row: 1; }
+.trabalho-02 { grid-column: 8 / span 5; grid-row: 1 / span 2; margin-top: 160px; }
+.trabalhos-citacao { grid-column: 1 / span 6; grid-row: 2; }
+.trabalho-03 { grid-column: 1 / -1; grid-row: 3; margin-top: 56px; }
+
+/* 07 · Contato
+   ========================================================================== */
+
+.contato-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: end;
+  margin-top: 72px;
+}
+
+.contato-lista {
+  grid-column: 1 / span 9;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.contato-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--preto);
+}
+
+.contato-item a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  overflow-wrap: anywhere;
+}
+
+.contato-botao {
+  grid-column: 10 / -1;
+  justify-self: end;
+}
+
+/* Rodapé
+   ========================================================================== */
+
+.rodape {
+  margin-top: var(--espaco-secao);
+}
+
+.rodape-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 20px;
+  padding-bottom: 32px;
+  border-top: 1px solid var(--preto);
+}
+
+.rodape-inner p:last-child {
+  color: var(--texto-sec);
+}
+
+/* Botão "voltar ao topo"
+   ========================================================================== */
+
+.voltar-topo {
+  position: fixed;
+  right: var(--pad-lateral);
+  bottom: 24px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--linha-escuro); /* continua visível sobre a seção preta */
+  border-radius: var(--raio);
+  background: var(--preto);
+  color: var(--off-white);
+}
+
+.voltar-topo:focus-visible {
+  outline: 2px solid var(--oliva);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Tablet: 761 a 1024px
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  :root {
+    --pad-lateral: 40px;
+    --gutter: 20px;
+  }
+
+  /* Topo: "Nº 01 · 2026" à esquerda, menu à direita */
+  .topo-inner {
+    grid-template-columns: auto 1fr;
+  }
+
+  .topo-ano {
+    display: inline;
+  }
+
+  .topo-kit {
+    display: none;
+  }
+
+  .topo-nav ul {
+    justify-content: flex-end;
+  }
+
+  .topo-nav a {
+    padding: 0 8px;
+    letter-spacing: .14em;
+  }
+
+  /* Capa: foto à esquerda, chamadas empilhadas à direita */
+  .capa-faixa {
+    grid-template-columns: 1fr auto;
+  }
+
+  .capa-faixa-meio {
+    display: none;
+  }
+
+  .capa-grid {
+    row-gap: 40px;
+  }
+
+  .capa-foto {
+    grid-column: 1 / span 7;
+    grid-row: 1 / span 2;
+  }
+
+  .capa-esq,
+  .capa-dir {
+    grid-column: 8 / -1;
+    justify-content: flex-start;
+    gap: 24px;
+  }
+
+  .capa-esq { grid-row: 1; }
+
+  .capa-dir {
+    grid-row: 2;
+    align-self: end;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .capa-especial {
+    display: none;
+  }
+
+  .sobre-lista-item {
+    grid-template-columns: 140px minmax(0, 1fr);
+  }
+
+  .sobre-textos {
+    grid-template-columns: 1fr;
+  }
+
+  .marcas-cabecalho .titulo {
+    grid-column: 1 / -1;
+  }
+
+  .marcas-intro {
+    grid-column: 1 / span 8;
+    margin-top: 32px;
+  }
+
+  .contato-lista {
+    grid-column: 1 / -1;
+  }
+
+  .contato-botao {
+    grid-column: 1 / -1;
+    justify-self: start;
+    margin-top: 40px;
+  }
+}
+
+/* ==========================================================================
+   Mobile: até 760px (composições reorganizadas)
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  :root {
+    --pad-lateral: 20px;
+    --gutter: 12px;
+    --espaco-secao: 72px;
+  }
+
+  .so-mobile {
+    display: inline;
+  }
+
+  .so-desktop {
+    display: none;
+  }
+
+  /* Topo: edição à esquerda, só "Contato" à direita */
+  .topo-inner {
+    grid-template-columns: 1fr auto;
+    min-height: 48px;
+  }
+
+  .topo-kit {
+    display: none;
+  }
+
+  .topo-nav li:not(.topo-nav-contato) {
+    display: none;
+  }
+
+  .topo-nav a {
+    padding: 0 0 0 12px;
+    font-size: 11px;
+  }
+
+  .topo-edicao {
+    font-size: 11px;
+  }
+
+  .rotulo,
+  .barra-secao {
+    font-size: 10px;
+  }
+
+  .legenda,
+  .placeholder {
+    font-size: 10px;
+  }
+
+  .texto {
+    font-size: 15px;
+  }
+
+  /* Títulos: palavra delicada em outra linha */
+  .titulo {
+    font-size: 84px;
+  }
+
+  .titulo .delicada {
+    display: block;
+  }
+
+  .secao .titulo {
+    margin-top: 32px;
+  }
+
+  .frase--apresentacao { font-size: 22px; }
+  .frase--posicionamento,
+  .frase--citacao { font-size: 28px; }
+
+  .valor,
+  .medidas dd {
+    font-size: 18px;
+  }
+
+  .botao {
+    width: 100%;
+  }
+
+  /* Capa: nome em duas linhas, foto antes das chamadas */
+  .capa {
+    padding-top: 24px;
+  }
+
+  .nome {
+    font-size: clamp(56px, 25.6vw, 100px);
+  }
+
+  .nome span {
+    display: block;
+  }
+
+  .capa-faixa {
+    grid-template-columns: 1fr auto;
+    margin-top: 20px;
+    padding: 12px 0;
+  }
+
+  .capa-faixa-meio {
+    display: none;
+  }
+
+  .capa-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "foto  foto"
+      "seg   eng"
+      "frase frase"
+      "apoio apoio"
+      "botao botao";
+    column-gap: var(--gutter);
+    row-gap: 24px;
+    margin-top: 24px;
+  }
+
+  .capa-esq,
+  .capa-dir {
+    display: contents;
+  }
+
+  .capa-foto        { grid-area: foto; }
+  .capa-seguidores  { grid-area: seg; }
+  .capa-engajamento { grid-area: eng; text-align: left; justify-self: start; }
+  .capa-frase       { grid-area: frase; }
+  .capa-apoio       { grid-area: apoio; }
+  .capa-botao       { grid-area: botao; }
+
+  .capa-especial {
+    display: none;
+  }
+
+  .foto--capa {
+    aspect-ratio: 4 / 5;
+  }
+
+  .numero-capa {
+    font-size: 36px;
+  }
+
+  /* Sobre: frase, fotos em par, textos e lista empilhados */
+  .sobre-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 32px;
+  }
+
+  .sobre-fotos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+    align-items: end;
+  }
+
+  .sobre-foto-perfil {
+    display: block;
+  }
+
+  .sobre-textos {
+    gap: 24px;
+  }
+
+  .bio::first-letter {
+    font-size: 60px;
+  }
+
+  .sobre-lista-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px 0;
+  }
+
+  .sobre-lista-item > dt {
+    padding-top: 0;
+  }
+
+  .medidas {
+    gap: 4px 16px;
+  }
+
+  /* Ensaio: fotos grandes alternando com um par desencontrado */
+  .ensaio-galeria {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 40px;
+    margin-top: 40px;
+  }
+
+  .ensaio-01,
+  .ensaio-04,
+  .ensaio-05 {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+
+  .ensaio-02 { grid-column: 1; margin-top: 0; }
+  .ensaio-03 { grid-column: 2; margin-top: 96px; }
+
+  .ensaio-sequencia {
+    gap: 8px;
+  }
+
+  /* Números: principal grande, demais em grade 2×2 */
+  .numeros-lista {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    margin-top: 40px;
+    border-bottom: 0;
+  }
+
+  .numeros-item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 16px 0 20px;
+  }
+
+  .numeros-item dt {
+    text-align: left;
+  }
+
+  .numeros-item--principal {
+    grid-column: 1 / -1;
+  }
+
+  .numeros-item .numero-grande {
+    font-size: 30px;
+  }
+
+  .numeros-item--principal .numero-grande {
+    font-size: 80px;
+  }
+
+  .numeros-fonte {
+    margin-top: 16px;
+    font-size: 11px;
+  }
+
+  /* Marcas */
+  .marcas-cabecalho {
+    display: block;
+  }
+
+  .marcas-intro {
+    margin-top: 24px;
+  }
+
+  .marcas-lista {
+    margin-top: 40px;
+  }
+
+  .marcas-lista li {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .marcas-num,
+  .marcas-logo {
+    font-size: 10px;
+  }
+
+  .marcas-nome {
+    font-size: 36px;
+  }
+
+  /* Trabalhos (e Ensaio, por causa de "fotográfico") */
+  .ensaio .titulo,
+  .trabalhos .titulo {
+    font-size: 72px;
+  }
+
+  .trabalhos-galeria {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  .trabalho-02 {
+    width: 64%;
+    margin: 0 0 0 auto;
+  }
+
+  .trabalho-03 {
+    margin-top: 0;
+  }
+
+  /* Contato */
+  .contato-grid {
+    display: block;
+    margin-top: 40px;
+  }
+
+  .contato-lista {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contato-botao {
+    margin-top: 40px;
+  }
+
+  .voltar-topo {
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .rodape-inner {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

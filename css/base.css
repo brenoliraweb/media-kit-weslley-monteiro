@@ -1,0 +1,337 @@
+/* ==========================================================================
+   Media Kit · Weslley Monteiro
+   base.css: tokens, reset leve, tipografia e componentes simples
+   ========================================================================== */
+
+/* Tokens
+   ========================================================================== */
+
+:root {
+  /* Cores (CLAUDE.md, seção 2) */
+  --off-white: #F7F6F2;
+  --preto: #171717;
+  --areia: #E8E6DF;
+  --oliva: #777B62;
+  --texto-sec: rgba(23,23,23,0.68);
+  --texto-sec-escuro: rgba(247,246,242,0.7);
+  --linha: rgba(23,23,23,0.14);
+  --linha-escuro: rgba(247,246,242,0.16);
+
+  /* Fontes (CLAUDE.md, seção 3) */
+  --font-forte: 'Anton', sans-serif;
+  --font-delicada: 'Antonio', sans-serif;
+  --font-destaque: 'Manrope', sans-serif;
+  --font-texto: 'Inter', system-ui, sans-serif;
+
+  /* Layout (CLAUDE.md, seção 5) */
+  --container: 1200px;
+  --pad-lateral: 24px;
+  --gutter: 24px;
+  --espaco-secao: 120px;
+  --raio: 8px;
+}
+
+/* Reset leve
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--off-white);
+  color: var(--preto);
+  font-family: var(--font-texto);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+h1, h2, h3, p, figure, blockquote, dl, dd, ol, ul {
+  margin: 0;
+}
+
+ol, ul {
+  padding: 0;
+  list-style: none;
+}
+
+img, picture, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* Foco visível */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Utilitários
+   ========================================================================== */
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.pular-conteudo {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--preto);
+  color: var(--off-white);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--raio);
+  transform: translateY(-200%);
+}
+
+.pular-conteudo:focus {
+  transform: none;
+}
+
+/* Tipografia
+   ========================================================================== */
+
+/* Título de seção: palavra forte + palavra delicada */
+.titulo {
+  font-family: var(--font-forte);
+  font-weight: 400;
+  font-size: clamp(64px, 14vw, 200px);
+  line-height: .9;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.titulo .delicada {
+  display: inline-block;
+  padding-top: .12em; /* espaço para acentos (Á, Ú) quando quebra a linha */
+  font-family: var(--font-delicada);
+  font-weight: 200;
+  color: var(--oliva);
+  letter-spacing: .01em;
+}
+
+/* Rótulos: barra de seção, menu, faixas */
+.rotulo {
+  font-family: var(--font-texto);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+/* Legendas e créditos */
+.legenda {
+  font-family: var(--font-texto);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--texto-sec);
+}
+
+.legenda--dupla {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+
+/* Texto corrido */
+.texto {
+  font-family: var(--font-texto);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--texto-sec);
+}
+
+.texto strong {
+  font-weight: 600;
+  color: var(--preto);
+}
+
+/* Frases em Manrope: light com palavra-chave bold oliva */
+.frase {
+  font-family: var(--font-destaque);
+  font-weight: 300;
+  color: var(--preto);
+}
+
+.frase strong {
+  font-weight: 700;
+  color: var(--oliva);
+}
+
+.frase--apresentacao {
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
+.frase--posicionamento {
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.frase--citacao {
+  font-size: clamp(30px, 4.2vw, 60px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Valores (medidas, contatos) */
+.valor {
+  font-family: var(--font-destaque);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.3;
+  color: var(--preto);
+}
+
+/* Números */
+.numero-capa,
+.numero-grande {
+  font-family: var(--font-forte);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.numero-capa {
+  font-size: clamp(40px, 4vw, 56px);
+}
+
+.numero-grande {
+  font-size: clamp(64px, 10vw, 152px);
+}
+
+.unidade {
+  font-family: var(--font-delicada);
+  font-weight: 300;
+}
+
+/* Botões
+   ========================================================================== */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: var(--raio);
+  background: var(--preto);
+  color: var(--off-white);
+  font-family: var(--font-texto);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.botao:focus-visible {
+  outline-color: var(--preto);
+}
+
+.botao--oliva {
+  min-height: 58px;
+  padding: 0 28px;
+  background: var(--oliva);
+  font-weight: 700;
+  font-size: 19px;
+}
+
+.botao--oliva:focus-visible {
+  outline-color: var(--oliva);
+}
+
+.botao-seta {
+  flex: none;
+}
+
+/* Fotos e placeholders
+   ========================================================================== */
+
+.foto {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--raio);
+  background: var(--areia);
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foto--3x4  { aspect-ratio: 3 / 4; }
+.foto--4x5  { aspect-ratio: 4 / 5; }
+.foto--9x16 { aspect-ratio: 9 / 16; }
+.foto--1x1  { aspect-ratio: 1 / 1; }
+.foto--4x3  { aspect-ratio: 4 / 3; }
+.foto--2x3  { aspect-ratio: 2 / 3; }
+.foto--21x9 { aspect-ratio: 21 / 9; }
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  font-family: var(--font-texto);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--texto-sec);
+}
+
+.placeholder--escuro {
+  background: var(--preto);
+  color: var(--texto-sec-escuro);
+}
+
+figcaption {
+  margin-top: 12px;
+}

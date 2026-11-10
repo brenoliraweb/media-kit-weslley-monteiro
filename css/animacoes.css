@@ -1,0 +1,365 @@
+/* ==========================================================================
+   Media Kit · Weslley Monteiro
+   animacoes.css: efeitos da seção 11 do CLAUDE.md
+
+   Regras:
+   - Só transform, opacity e clip-path são animados.
+   - Estados escondidos só existem dentro de .js (sem JS, tudo aparece).
+   - Todo movimento fica dentro de prefers-reduced-motion: no-preference;
+     com movimento reduzido, os elementos já estão no estado final.
+   ========================================================================== */
+
+/* Tokens de movimento
+   ========================================================================== */
+
+:root {
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1); /* saída suave, sem quique */
+  --dur-rapida: 300ms;   /* hovers */
+  --dur-media: 700ms;    /* revelar ao rolar */
+  --dur-lenta: 1200ms;   /* entrada da capa, cortina das fotos */
+  --atraso-delicada: 150ms; /* atraso da palavra delicada nos títulos */
+  --atraso-sequencia: 80ms; /* intervalo entre itens em sequência */
+  --deslocamento: 24px;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --deslocamento: 16px;
+  }
+}
+
+/* Estrutura (vale com ou sem movimento)
+   ========================================================================== */
+
+/* Máscara do nome */
+.nome-forte,
+.nome-delicada {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* Folga para letras redondas (O) que descem abaixo da linha de base;
+     a margem negativa compensa e o layout não muda */
+  padding-bottom: .1em;
+  margin-bottom: -.1em;
+}
+
+.nome-mascara {
+  display: inline-block;
+}
+
+/* Menu que some ao rolar para baixo (classe aplicada pelo JS) */
+.topo--oculto {
+  transform: translateY(-100%);
+}
+
+/* Indicador de progresso (criado pelo JS) */
+.progresso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 2px;
+  background: var(--oliva);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* Sublinhado do menu e dos contatos */
+.topo-nav a,
+.contato-item a {
+  position: relative;
+}
+
+.topo-nav a::after,
+.contato-item a::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.contato-item a::after {
+  left: 0;
+  right: 0;
+  bottom: 8px;
+}
+
+.topo-nav a:hover::after,
+.topo-nav a:focus-visible::after,
+.contato-item a:hover::after,
+.contato-item a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 1024px) {
+  .topo-nav a::after {
+    left: 8px;
+    right: 8px;
+  }
+}
+
+@media (max-width: 760px) {
+  .topo-nav a::after {
+    left: 12px;
+    right: 0;
+  }
+}
+
+/* Botão "voltar ao topo": com JS, só aparece depois da primeira tela */
+.js .voltar-topo {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.js .voltar-topo--visivel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Faixa corrida (marquee) */
+.marquee {
+  overflow: hidden;
+  margin-top: var(--espaco-secao);
+  padding: 14px 0;
+  border-top: 1px solid var(--areia);
+  border-bottom: 1px solid var(--areia);
+}
+
+.marquee-trilha {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-grupo {
+  display: flex;
+  flex: none;
+}
+
+.marquee-grupo span {
+  padding-right: .8em;
+  white-space: nowrap;
+}
+
+/* Movimento
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Nome revelado por máscara (carregamento) */
+  .js .nome-mascara {
+    animation: subir var(--dur-lenta) var(--ease-editorial) both;
+  }
+
+  .js .nome-delicada .nome-mascara {
+    animation-delay: var(--atraso-delicada);
+  }
+
+  /* Linhas se desenhando: topo e faixa da capa no carregamento */
+  .js .topo::after {
+    animation: desenhar var(--dur-lenta) var(--ease-editorial) both;
+  }
+
+  .js .capa-faixa::before {
+    animation: desenhar var(--dur-lenta) var(--ease-editorial) 200ms both;
+  }
+
+  .js .capa-faixa > p {
+    animation: aparecer var(--dur-media) var(--ease-editorial) 400ms both;
+  }
+
+  /* Zoom lento da capa: a foto já começa visível (LCP) */
+  .js .foto--capa img {
+    animation: zoom-capa var(--dur-lenta) var(--ease-editorial) both;
+  }
+
+  /* Revelar ao rolar */
+  .js [data-revelar] {
+    opacity: 0;
+    transform: translateY(var(--deslocamento));
+    transition:
+      opacity var(--dur-media) var(--ease-editorial),
+      transform var(--dur-media) var(--ease-editorial);
+  }
+
+  .js [data-revelar].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Itens em sequência (o JS define --i em cada filho) */
+  .js [data-revelar-grupo] > * {
+    opacity: 0;
+    transform: translateY(var(--deslocamento));
+    transition:
+      opacity var(--dur-media) var(--ease-editorial),
+      transform var(--dur-media) var(--ease-editorial);
+    transition-delay: calc(var(--i, 0) * var(--atraso-sequencia));
+  }
+
+  .js [data-revelar-grupo].is-visible > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Barras de seção: a linha se desenha e o texto aparece, sem deslocar */
+  .js .barra-secao[data-revelar] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .barra-secao[data-revelar]::before {
+    transform: scaleX(0);
+    transition: transform var(--dur-lenta) var(--ease-editorial);
+  }
+
+  .js .barra-secao[data-revelar] > span {
+    opacity: 0;
+    transition: opacity var(--dur-media) var(--ease-editorial) 300ms;
+  }
+
+  .js .barra-secao[data-revelar].is-visible::before {
+    transform: scaleX(1);
+  }
+
+  .js .barra-secao[data-revelar].is-visible > span {
+    opacity: 1;
+  }
+
+  /* Título em duas etapas: a palavra delicada entra depois */
+  .js .titulo[data-revelar] .delicada {
+    opacity: 0;
+    transform: translateY(.15em);
+    transition:
+      opacity var(--dur-media) var(--ease-editorial) var(--atraso-delicada),
+      transform var(--dur-media) var(--ease-editorial) var(--atraso-delicada);
+  }
+
+  .js .titulo[data-revelar].is-visible .delicada {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Cortina nas fotos: de baixo para cima */
+  .js [data-cortina] {
+    clip-path: inset(100% 0 0 0 round var(--raio));
+    transition: clip-path var(--dur-lenta) var(--ease-editorial);
+  }
+
+  .js [data-cortina].is-visible {
+    clip-path: inset(0 0 0 0 round var(--raio));
+  }
+
+  .js .ensaio-sequencia [data-cortina]:nth-child(2) { transition-delay: var(--atraso-sequencia); }
+  .js .ensaio-sequencia [data-cortina]:nth-child(3) { transition-delay: calc(var(--atraso-sequencia) * 2); }
+
+  /* Menu que reage à rolagem */
+  .topo {
+    transition: transform var(--dur-media) var(--ease-editorial);
+  }
+
+  /* Sublinhado animado */
+  .topo-nav a::after,
+  .contato-item a::after {
+    transition: transform var(--dur-rapida) var(--ease-editorial);
+  }
+
+  /* Rolagem suave nas âncoras (menu e "voltar ao topo") */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Botão "voltar ao topo": surge subindo de leve */
+  .js .voltar-topo {
+    transform: translateY(12px);
+    transition:
+      opacity var(--dur-rapida) var(--ease-editorial),
+      transform var(--dur-rapida) var(--ease-editorial),
+      visibility 0s linear var(--dur-rapida);
+  }
+
+  .js .voltar-topo--visivel {
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  /* Faixa corrida */
+  .marquee-trilha {
+    animation: correr 40s linear infinite;
+  }
+
+  .marquee:hover .marquee-trilha {
+    animation-play-state: paused;
+  }
+
+  /* Hovers (só em dispositivos com mouse) */
+  @media (hover: hover) {
+    .ensaio .foto img,
+    .trabalho .foto img {
+      transition: transform var(--dur-rapida) var(--ease-editorial);
+    }
+
+    .ensaio .foto:hover img,
+    .trabalho .foto:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Só o deslocamento é animado; a troca para oliva é imediata */
+    .marcas-nome {
+      transition: transform var(--dur-rapida) var(--ease-editorial);
+    }
+
+    .marcas-lista li:hover .marcas-nome {
+      color: var(--oliva);
+      transform: translateX(8px);
+    }
+
+    .botao-seta {
+      transition: transform var(--dur-rapida) var(--ease-editorial);
+    }
+
+    .botao:hover .botao-seta {
+      transform: translateX(4px);
+    }
+
+    .voltar-topo-seta {
+      transition: transform var(--dur-rapida) var(--ease-editorial);
+    }
+
+    .voltar-topo:hover .voltar-topo-seta {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes subir {
+    from { transform: translateY(115%); } /* além da folga, para começar totalmente escondido */
+    to   { transform: none; }
+  }
+
+  @keyframes desenhar {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  @keyframes aparecer {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes zoom-capa {
+    from { transform: scale(1.06); }
+    to   { transform: none; }
+  }
+
+  @keyframes correr {
+    to { transform: translateX(-50%); }
+  }
+}
