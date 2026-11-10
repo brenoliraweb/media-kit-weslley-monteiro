@@ -1,8 +1,3 @@
-/* ==========================================================================
-   Media Kit · Weslley Monteiro
-   layout.css: container, grid, seções e breakpoints (1024px e 760px)
-   ========================================================================== */
-
 /* Container e grid
    ========================================================================== */
 
@@ -40,7 +35,6 @@
   background: var(--areia);
 }
 
-/* Barra fina que abre cada seção */
 .barra-secao {
   position: relative;
   display: flex;
@@ -287,7 +281,6 @@ main [id] {
   gap: var(--gutter);
 }
 
-/* Capitular em Anton */
 .bio::first-letter {
   float: left;
   margin: 6px 12px 0 0;
@@ -367,6 +360,69 @@ main [id] {
   gap: 24px;
 }
 
+/* Chamada para o Instagram, no fim da galeria */
+.instagram-chamada {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: end;
+  margin-top: 120px;
+  padding-top: 32px;
+  border-top: 1px solid var(--preto);
+}
+
+.instagram-handle {
+  position: relative;
+  grid-column: 1 / span 8;
+  justify-self: start;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 16px;
+  color: var(--preto);
+}
+
+.instagram-handle-texto {
+  font-family: var(--font-forte);
+  font-weight: 400;
+  font-size: clamp(56px, 9vw, 128px);
+  line-height: .9;
+  text-transform: uppercase;
+}
+
+.instagram-handle .delicada {
+  display: block;
+  font-family: var(--font-delicada);
+  font-weight: 200;
+  letter-spacing: .01em;
+  color: var(--oliva);
+}
+
+.instagram-handle .seta-diagonal {
+  flex: none;
+  width: clamp(28px, 3vw, 40px);
+  height: auto;
+  margin-bottom: .4em;
+}
+
+.instagram-info {
+  grid-column: 9 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 16px;
+}
+
+.capa-seguidores .capa-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-top: 0;
+  color: var(--preto);
+}
+
 /* 04 · Números e resultados
    ========================================================================== */
 
@@ -401,6 +457,15 @@ main [id] {
 .numeros-item dt {
   order: 2;
   text-align: right;
+}
+
+.numeros-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 24px;
+  color: var(--off-white);
 }
 
 .numeros-fonte {
@@ -493,18 +558,23 @@ main [id] {
 /* 07 · Contato
    ========================================================================== */
 
+/* Flex com quebra: se os três contatos não couberem ao lado do botão,
+   o botão desce para a linha de baixo em vez de espremer o e-mail. */
 .contato-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--gutter);
-  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px 48px;
   margin-top: 72px;
 }
 
+/* Cada coluna tem no mínimo a largura do próprio texto (o e-mail nunca
+   quebra no meio); a do e-mail recebe mais espaço. */
 .contato-lista {
-  grid-column: 1 / span 9;
+  flex: 1 1 720px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(max-content, 1fr)) minmax(max-content, 1.4fr);
   gap: var(--gutter);
 }
 
@@ -521,11 +591,12 @@ main [id] {
   align-items: center;
   min-height: 44px;
   overflow-wrap: anywhere;
+  /* 700: o oliva do hover só é permitido em texto de 19px+ em negrito */
+  font-weight: 700;
 }
 
 .contato-botao {
-  grid-column: 10 / -1;
-  justify-self: end;
+  flex: none;
 }
 
 /* Rodapé
@@ -582,7 +653,7 @@ main [id] {
     --gutter: 20px;
   }
 
-  /* Topo: "Nº 01 · 2026" à esquerda, menu à direita */
+  /* Topo: "Nº 01 · ano" à esquerda, menu à direita */
   .topo-inner {
     grid-template-columns: auto 1fr;
   }
@@ -659,14 +730,23 @@ main [id] {
     margin-top: 32px;
   }
 
+  /* Tablet: lista em largura total, e-mail na linha de baixo ocupando as duas colunas */
   .contato-lista {
+    flex-basis: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contato-item:last-child {
     grid-column: 1 / -1;
   }
 
-  .contato-botao {
+  .instagram-handle,
+  .instagram-info {
     grid-column: 1 / -1;
-    justify-self: start;
-    margin-top: 40px;
+  }
+
+  .instagram-info {
+    margin-top: 32px;
   }
 }
 
@@ -874,6 +954,23 @@ main [id] {
     gap: 8px;
   }
 
+  .instagram-chamada {
+    margin-top: 72px;
+    padding-top: 24px;
+  }
+
+  .instagram-handle {
+    gap: 12px;
+  }
+
+  .instagram-handle-texto {
+    font-size: 56px;
+  }
+
+  .instagram-info {
+    margin-top: 24px;
+  }
+
   /* Números: principal grande, demais em grade 2×2 */
   .numeros-lista {
     display: grid;
@@ -912,7 +1009,6 @@ main [id] {
     font-size: 11px;
   }
 
-  /* Marcas */
   .marcas-cabecalho {
     display: block;
   }
@@ -963,19 +1059,13 @@ main [id] {
     margin-top: 0;
   }
 
-  /* Contato */
   .contato-grid {
-    display: block;
     margin-top: 40px;
   }
 
   .contato-lista {
     grid-template-columns: 1fr;
     gap: 24px;
-  }
-
-  .contato-botao {
-    margin-top: 40px;
   }
 
   .voltar-topo {

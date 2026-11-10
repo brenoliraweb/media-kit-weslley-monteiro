@@ -1,24 +1,13 @@
-/* ==========================================================================
-   Media Kit · Weslley Monteiro
-   animacoes.css: efeitos da seção 11 do CLAUDE.md
-
-   Regras:
-   - Só transform, opacity e clip-path são animados.
-   - Estados escondidos só existem dentro de .js (sem JS, tudo aparece).
-   - Todo movimento fica dentro de prefers-reduced-motion: no-preference;
-     com movimento reduzido, os elementos já estão no estado final.
-   ========================================================================== */
-
 /* Tokens de movimento
    ========================================================================== */
 
 :root {
-  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1); /* saída suave, sem quique */
-  --dur-rapida: 300ms;   /* hovers */
-  --dur-media: 700ms;    /* revelar ao rolar */
-  --dur-lenta: 1200ms;   /* entrada da capa, cortina das fotos */
-  --atraso-delicada: 150ms; /* atraso da palavra delicada nos títulos */
-  --atraso-sequencia: 80ms; /* intervalo entre itens em sequência */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-rapida: 300ms;
+  --dur-media: 700ms;
+  --dur-lenta: 1200ms;
+  --atraso-delicada: 150ms;
+  --atraso-sequencia: 80ms;
   --deslocamento: 24px;
 }
 
@@ -66,14 +55,11 @@
   pointer-events: none;
 }
 
-/* Sublinhado do menu e dos contatos */
-.topo-nav a,
-.contato-item a {
+.topo-nav a {
   position: relative;
 }
 
-.topo-nav a::after,
-.contato-item a::after {
+.topo-nav a::after {
   content: "";
   position: absolute;
   left: 12px;
@@ -85,17 +71,136 @@
   transform-origin: left;
 }
 
-.contato-item a::after {
-  left: 0;
-  right: 0;
-  bottom: 8px;
+.topo-nav a:hover::after,
+.topo-nav a:focus-visible::after {
+  transform: scaleX(1);
 }
 
-.topo-nav a:hover::after,
-.topo-nav a:focus-visible::after,
+/* Contatos: a linha de cima do item se desenha em oliva no hover/foco */
+.contato-item {
+  position: relative;
+}
+
+.contato-item::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--oliva);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.contato-item:has(a:hover)::before,
+.contato-item:has(a:focus-visible)::before {
+  transform: scaleX(1);
+}
+
+.instagram-handle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--oliva);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.instagram-handle:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) {
+  .instagram-handle:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Cortina dos botões: o JS cria .botao-cortina, uma cópia do conteúdo com as cores invertidas */
+.botao {
+  position: relative;
+}
+
+/* .voltar-topo já é position: fixed, que também serve de referência */
+.botao,
+.voltar-topo {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.botao-cortina {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: inherit;
+  gap: inherit;
+  padding: inherit;
+  background: var(--off-white);
+  color: var(--preto);
+  clip-path: inset(100% 0 0 0);
+  pointer-events: none;
+}
+
+.botao--oliva .botao-cortina {
+  background: var(--preto);
+  color: var(--off-white);
+}
+
+.voltar-topo .botao-cortina {
+  justify-content: center;
+  background: var(--oliva);
+  color: var(--off-white);
+}
+
+.botao:focus-visible .botao-cortina,
+.voltar-topo:focus-visible .botao-cortina {
+  clip-path: inset(0);
+}
+
+@media (hover: hover) {
+  .botao:hover .botao-cortina,
+  .voltar-topo:hover .botao-cortina {
+    clip-path: inset(0);
+  }
+}
+
+/* Contatos: em vez de animar color, o texto preto é recortado enquanto a cópia oliva (::after) aparece */
+.contato-item a {
+  position: relative;
+}
+
+.contato-texto {
+  clip-path: inset(0 0 0 0);
+}
+
+.contato-item a::after {
+  content: attr(data-texto);
+  content: attr(data-texto) / ""; /* não é lido duas vezes por leitores de tela */
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--oliva);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+}
+
+.contato-item a:hover .contato-texto,
+.contato-item a:focus-visible .contato-texto {
+  clip-path: inset(0 0 0 100%);
+}
+
 .contato-item a:hover::after,
 .contato-item a:focus-visible::after {
-  transform: scaleX(1);
+  clip-path: inset(0 0 0 0);
 }
 
 @media (max-width: 1024px) {
@@ -125,7 +230,6 @@
   pointer-events: auto;
 }
 
-/* Faixa corrida (marquee) */
 .marquee {
   overflow: hidden;
   margin-top: var(--espaco-secao);
@@ -181,7 +285,6 @@
     animation: zoom-capa var(--dur-lenta) var(--ease-editorial) both;
   }
 
-  /* Revelar ao rolar */
   .js [data-revelar] {
     opacity: 0;
     transform: translateY(var(--deslocamento));
@@ -261,15 +364,29 @@
   .js .ensaio-sequencia [data-cortina]:nth-child(2) { transition-delay: var(--atraso-sequencia); }
   .js .ensaio-sequencia [data-cortina]:nth-child(3) { transition-delay: calc(var(--atraso-sequencia) * 2); }
 
-  /* Menu que reage à rolagem */
   .topo {
     transition: transform var(--dur-media) var(--ease-editorial);
   }
 
-  /* Sublinhado animado */
-  .topo-nav a::after,
-  .contato-item a::after {
+  .topo-nav a::after {
     transition: transform var(--dur-rapida) var(--ease-editorial);
+  }
+
+  .contato-item::before {
+    transition: transform var(--dur-media) var(--ease-editorial);
+  }
+
+  .contato-texto,
+  .contato-item a::after {
+    transition: clip-path var(--dur-media) var(--ease-editorial);
+  }
+
+  .botao-cortina {
+    transition: clip-path var(--dur-media) var(--ease-editorial);
+  }
+
+  .instagram-handle::after {
+    transition: transform var(--dur-media) var(--ease-editorial);
   }
 
   /* Rolagem suave nas âncoras (menu e "voltar ao topo") */
@@ -291,7 +408,6 @@
     transition-delay: 0s;
   }
 
-  /* Faixa corrida */
   .marquee-trilha {
     animation: correr 40s linear infinite;
   }
@@ -323,11 +439,23 @@
     }
 
     .botao-seta {
-      transition: transform var(--dur-rapida) var(--ease-editorial);
+      transition: transform var(--dur-media) var(--ease-editorial);
     }
 
     .botao:hover .botao-seta {
-      transform: translateX(4px);
+      transform: translateX(6px);
+    }
+
+    .seta-diagonal {
+      transition: transform var(--dur-media) var(--ease-editorial);
+    }
+
+    a:hover > .seta-diagonal {
+      transform: translate(4px, -4px);
+    }
+
+    .instagram-handle:hover > .seta-diagonal {
+      transform: translate(8px, -8px);
     }
 
     .voltar-topo-seta {

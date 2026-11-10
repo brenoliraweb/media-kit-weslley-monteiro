@@ -1,13 +1,7 @@
-/* ==========================================================================
-   Media Kit · Weslley Monteiro
-   base.css: tokens, reset leve, tipografia e componentes simples
-   ========================================================================== */
-
 /* Tokens
    ========================================================================== */
 
 :root {
-  /* Cores (CLAUDE.md, seção 2) */
   --off-white: #F7F6F2;
   --preto: #171717;
   --areia: #E8E6DF;
@@ -17,13 +11,11 @@
   --linha: rgba(23,23,23,0.14);
   --linha-escuro: rgba(247,246,242,0.16);
 
-  /* Fontes (CLAUDE.md, seção 3) */
   --font-forte: 'Anton', sans-serif;
   --font-delicada: 'Antonio', sans-serif;
   --font-destaque: 'Manrope', sans-serif;
   --font-texto: 'Inter', system-ui, sans-serif;
 
-  /* Layout (CLAUDE.md, seção 5) */
   --container: 1200px;
   --pad-lateral: 24px;
   --gutter: 24px;
@@ -80,7 +72,6 @@ strong {
   font-weight: 700;
 }
 
-/* Foco visível */
 :focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
@@ -126,7 +117,6 @@ strong {
 /* Tipografia
    ========================================================================== */
 
-/* Título de seção: palavra forte + palavra delicada */
 .titulo {
   font-family: var(--font-forte);
   font-weight: 400;
@@ -145,7 +135,6 @@ strong {
   letter-spacing: .01em;
 }
 
-/* Rótulos: barra de seção, menu, faixas */
 .rotulo {
   font-family: var(--font-texto);
   font-weight: 600;
@@ -155,7 +144,6 @@ strong {
   text-transform: uppercase;
 }
 
-/* Legendas e créditos */
 .legenda {
   font-family: var(--font-texto);
   font-weight: 600;
@@ -173,7 +161,6 @@ strong {
   gap: 4px 16px;
 }
 
-/* Texto corrido */
 .texto {
   font-family: var(--font-texto);
   font-weight: 400;
@@ -217,7 +204,6 @@ strong {
   letter-spacing: -0.02em;
 }
 
-/* Valores (medidas, contatos) */
 .valor {
   font-family: var(--font-destaque);
   font-weight: 600;
@@ -226,7 +212,6 @@ strong {
   color: var(--preto);
 }
 
-/* Números */
 .numero-capa,
 .numero-grande {
   font-family: var(--font-forte);
@@ -258,6 +243,7 @@ strong {
   gap: 16px;
   min-height: 52px;
   padding: 0 24px;
+  border: 1px solid var(--preto); /* mantém o contorno quando a cortina clara cobre o botão */
   border-radius: var(--raio);
   background: var(--preto);
   color: var(--off-white);
@@ -275,6 +261,7 @@ strong {
 .botao--oliva {
   min-height: 58px;
   padding: 0 28px;
+  border: 0;
   background: var(--oliva);
   font-weight: 700;
   font-size: 19px;

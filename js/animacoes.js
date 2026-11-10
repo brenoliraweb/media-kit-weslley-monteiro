@@ -1,9 +1,3 @@
-/* ==========================================================================
-   Media Kit · Weslley Monteiro
-   animacoes.js: melhoria progressiva dos efeitos (CLAUDE.md, seção 11)
-   Sem bibliotecas. Sem JS, o conteúdo aparece normalmente.
-   ========================================================================== */
-
 (function () {
   'use strict';
 
@@ -101,6 +95,18 @@
 
     alvos.forEach(function (el) { observer.observe(el); });
   }
+
+  /* Cortina dos botões: cópia decorativa do conteúdo, com as cores invertidas pelo CSS
+     ======================================================================== */
+
+  document.querySelectorAll('[data-botao-cortina]').forEach(function (botao) {
+    var cortina = document.createElement('span');
+    cortina.className = 'botao-cortina';
+    cortina.setAttribute('aria-hidden', 'true');
+    cortina.innerHTML = botao.innerHTML;
+    cortina.querySelectorAll('.visualmente-oculto').forEach(function (el) { el.remove(); });
+    botao.appendChild(cortina);
+  });
 
   /* Menu que reage à rolagem e indicador de progresso
      ======================================================================== */
