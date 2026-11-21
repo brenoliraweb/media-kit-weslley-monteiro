@@ -527,11 +527,24 @@ main [id] {
 }
 
 .marcas-logo {
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--texto-sec);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 72px;
+}
+
+.marcas-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.marcas-logo--don-diego img {
+  filter: brightness(0);
 }
 
 /* 06 · Trabalhos e campanhas
@@ -550,10 +563,24 @@ main [id] {
   margin-top: 72px;
 }
 
-.trabalho-01 { grid-column: 1 / span 6; grid-row: 1; }
-.trabalho-02 { grid-column: 8 / span 5; grid-row: 1 / span 2; margin-top: 160px; }
-.trabalhos-citacao { grid-column: 1 / span 6; grid-row: 2; }
-.trabalho-03 { grid-column: 1 / -1; grid-row: 3; margin-top: 56px; }
+.trabalho-01 { grid-column: 1 / span 4; grid-row: 1; }
+.trabalho-02 { grid-column: 5 / span 4; grid-row: 1; margin-top: 80px; }
+.trabalhos-citacao { grid-column: 1 / -1; grid-row: 2; }
+.trabalho-03 { grid-column: 9 / span 4; grid-row: 1; }
+
+.trabalho {
+  min-width: 0;
+}
+
+.trabalho-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  border-radius: var(--raio);
+  background: var(--preto);
+}
 
 /* 07 · Contato
    ========================================================================== */
@@ -1027,9 +1054,13 @@ main [id] {
     padding: 12px 0;
   }
 
-  .marcas-num,
-  .marcas-logo {
+  .marcas-num {
     font-size: 10px;
+  }
+
+  .marcas-logo {
+    width: 88px;
+    height: 44px;
   }
 
   .marcas-nome {
@@ -1050,13 +1081,13 @@ main [id] {
     margin-top: 40px;
   }
 
-  .trabalho-02 {
-    width: 64%;
-    margin: 0 0 0 auto;
-  }
-
+  .trabalho-02,
   .trabalho-03 {
     margin-top: 0;
+  }
+
+  .trabalhos-citacao {
+    order: 1;
   }
 
   .contato-grid {
