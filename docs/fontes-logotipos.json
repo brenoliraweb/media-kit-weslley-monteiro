@@ -1,0 +1,31 @@
+{
+  "cea": {
+    "pagina": "https://www.cea.com.br/",
+    "arquivo": "https://cea.vtexassets.com/arquivos/cea-logo-base.png",
+    "arquivo_local": "public/assets/logos/cea.png"
+  },
+  "riachuelo": {
+    "pagina": "https://www.riachuelo.com.br/portal-creators-tik-tok-shop",
+    "arquivo": "https://drive.google.com/file/d/1gU0fYmdogzqpZVi2Yhzs-XmdAHMrlG11/view",
+    "preparo": "Margens transparentes removidas e tamanho reduzido, preservando cores e proporcoes.",
+    "arquivo_local": "public/assets/logos/riachuelo.png",
+    "original_local": "docs/arquivos-de-origem/logotipos/riachuelo.png"
+  },
+  "don_diego": {
+    "pagina": "https://dondiegostyle.com.br/",
+    "arquivo_local": "public/assets/logos/don-diego.png",
+    "arquivo": "https://acdn-us.mitiendanube.com/stores/005/578/963/themes/common/logo-2051626989-1736791470-109acc3df72c144e14c0d24746f40f901736791470.png?0",
+    "origem": "Logotipo original da loja oficial Don Diego Style.",
+    "variantes_locais": [
+      "docs/arquivos-de-origem/logotipos/don-diego-variante.webp",
+      "docs/arquivos-de-origem/logotipos/don-diego-download.webp"
+    ]
+  },
+  "pele_bonita": {
+    "pagina": "https://www.pelebonita.store/",
+    "arquivo": "https://images.tcdn.com.br/files/1463725/themes/107/img/settings/wavz-1793833732375-Logo-horizontal-PeleBonita-com-si-mbolo-dourado.png",
+    "preparo": "Margens transparentes removidas e tamanho reduzido, preservando cores e proporcoes.",
+    "arquivo_local": "public/assets/logos/pele-bonita.png",
+    "original_local": "docs/arquivos-de-origem/logotipos/pele-bonita.png"
+  }
+}

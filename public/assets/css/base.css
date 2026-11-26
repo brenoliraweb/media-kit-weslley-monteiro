@@ -1,5 +1,4 @@
-/* Tokens
-   ========================================================================== */
+/* Tokens */
 
 :root {
   --off-white: #F7F6F2;
@@ -23,8 +22,7 @@
   --raio: 8px;
 }
 
-/* Reset leve
-   ========================================================================== */
+/* Reset leve */
 
 *,
 *::before,
@@ -78,8 +76,7 @@ strong {
   border-radius: 2px;
 }
 
-/* Utilitários
-   ========================================================================== */
+/* Utilitários */
 
 .visualmente-oculto {
   position: absolute;
@@ -114,8 +111,7 @@ strong {
   transform: none;
 }
 
-/* Tipografia
-   ========================================================================== */
+/* Tipografia */
 
 .titulo {
   font-family: var(--font-forte);
@@ -128,7 +124,7 @@ strong {
 
 .titulo .delicada {
   display: inline-block;
-  padding-top: .12em; /* espaço para acentos (Á, Ú) quando quebra a linha */
+  padding-top: .12em; /* Evita cortar os acentos quando o título quebra de linha. */
   font-family: var(--font-delicada);
   font-weight: 200;
   color: var(--oliva);
@@ -174,7 +170,6 @@ strong {
   color: var(--preto);
 }
 
-/* Frases em Manrope: light com palavra-chave bold oliva */
 .frase {
   font-family: var(--font-destaque);
   font-weight: 300;
@@ -233,8 +228,7 @@ strong {
   font-weight: 300;
 }
 
-/* Botões
-   ========================================================================== */
+/* Botões */
 
 .botao {
   display: inline-flex;
@@ -243,7 +237,7 @@ strong {
   gap: 16px;
   min-height: 52px;
   padding: 0 24px;
-  border: 1px solid var(--preto); /* mantém o contorno quando a cortina clara cobre o botão */
+  border: 1px solid var(--preto); /* Preserva o contorno com a cortina clara sobre o botão. */
   border-radius: var(--raio);
   background: var(--preto);
   color: var(--off-white);
@@ -275,8 +269,7 @@ strong {
   flex: none;
 }
 
-/* Fotos e placeholders
-   ========================================================================== */
+/* Fotos e placeholders */
 
 .foto {
   display: block;

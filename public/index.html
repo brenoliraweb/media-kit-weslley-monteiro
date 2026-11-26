@@ -11,7 +11,7 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="Weslley Monteiro">
   <meta name="theme-color" content="#F7F6F2">
-  <link rel="canonical" href="https://weslleymonteiro.vercel.app/">
+  <link rel="canonical" href="https://weslleymonteiroof.com.br/">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
@@ -23,8 +23,8 @@
   <meta property="og:title" content="Weslley Monteiro · Modelo e artista · Media Kit">
   <meta property="og:description"
     content="Estratégia, criatividade e conteúdo para construir conexões reais entre marcas e pessoas. Parcerias em todo o Brasil.">
-  <meta property="og:url" content="https://weslleymonteiro.vercel.app/">
-  <meta property="og:image" content="https://weslleymonteiro.vercel.app/assets/img/og/og-image.jpg">
+  <meta property="og:url" content="https://weslleymonteiroof.com.br/">
+  <meta property="og:image" content="https://weslleymonteiroof.com.br/assets/img/og/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -36,22 +36,22 @@
   <meta name="twitter:title" content="Weslley Monteiro · Modelo e artista · Media Kit">
   <meta name="twitter:description"
     content="Estratégia, criatividade e conteúdo para construir conexões reais entre marcas e pessoas. Parcerias em todo o Brasil.">
-  <meta name="twitter:image" content="https://weslleymonteiro.vercel.app/assets/img/og/og-image.jpg">
+  <meta name="twitter:image" content="https://weslleymonteiroof.com.br/assets/img/og/og-image.jpg">
   <meta name="twitter:image:alt" content="Weslley Monteiro em retrato de estúdio, olhando para a câmera">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    "url": "https://weslleymonteiro.vercel.app/",
+    "url": "https://weslleymonteiroof.com.br/",
     "name": "Weslley Monteiro · Modelo e artista · Media Kit",
     "inLanguage": "pt-BR",
     "mainEntity": {
       "@type": "Person",
       "name": "Weslley Monteiro",
       "jobTitle": "Modelo e artista",
-      "url": "https://weslleymonteiro.vercel.app/",
-      "image": "https://weslleymonteiro.vercel.app/assets/img/capa/weslley-monteiro-capa-1600.jpg",
+      "url": "https://weslleymonteiroof.com.br/",
+      "image": "https://weslleymonteiroof.com.br/assets/img/capa/weslley-monteiro-capa-1600.jpg",
       "sameAs": ["https://www.instagram.com/weslleymonteiroof/"],
       "workLocation": { "@type": "Country", "name": "Brasil" }
     }
@@ -69,17 +69,17 @@
     imagesrcset="assets/img/capa/weslley-monteiro-capa-800.webp 800w, assets/img/capa/weslley-monteiro-capa-1600.webp 1600w"
     imagesizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1024px) 50vw, 588px">
 
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/animacoes.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animacoes.css">
 
-  <!-- Marca o JS antes da primeira pintura; se animacoes.js não carregar em 3s, tudo volta a aparecer -->
+  <!-- Restaura a visibilidade se as animações não terminarem de inicializar em 3s. -->
   <script>
     document.documentElement.classList.add('js');
     setTimeout(function () { if (!window.animacoesProntas) document.documentElement.classList.remove('js'); }, 3000);
   </script>
-  <script src="js/animacoes.js" defer></script>
-  <script src="js/site.js" defer></script>
+  <script src="assets/js/animacoes.js" defer></script>
+  <script src="assets/js/site.js" defer></script>
 </head>
 
 <body>
@@ -125,9 +125,14 @@
             <div class="capa-seguidores" data-revelar>
               <p class="numero-capa"><span data-contar="79.4" data-casas="1">79,4</span> <span
                   class="unidade">mil</span></p>
-              <a class="legenda capa-instagram" href="https://www.instagram.com/weslleymonteiroof/" target="_blank" rel="noopener"
-                aria-label="Seguidores no Instagram: abrir o perfil @weslleymonteiroof (nova aba)">Seguidores no Instagram
-                <svg class="seta-diagonal" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 12 12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></a>
+              <a class="legenda capa-instagram" href="https://www.instagram.com/weslleymonteiroof/" target="_blank"
+                rel="noopener"
+                aria-label="Seguidores no Instagram: abrir o perfil @weslleymonteiroof (nova aba)">Seguidores no
+                Instagram
+                <svg class="seta-diagonal" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"
+                  focusable="false">
+                  <path d="M4 12 12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg></a>
             </div>
             <p class="frase frase--posicionamento capa-frase" data-revelar>Criatividade que <strong>conecta</strong>
               marcas e pessoas.</p>
@@ -167,18 +172,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Faixa corrida: capa / sobre -->
-    <!-- <div class="marquee marquee--capa">
-      <div class="marquee-trilha">
-        <p class="marquee-grupo rotulo"><span>MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL ·</span><span
-            aria-hidden="true">MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL ·</span><span
-            aria-hidden="true">MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL ·</span></p>
-        <p class="marquee-grupo rotulo" aria-hidden="true"><span>MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL
-            ·</span><span>MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL ·</span><span>MODELO · ARTISTA ·
-            PARCERIAS COM MARCAS · TODO O BRASIL ·</span></p>
-      </div>
-    </div> -->
 
     <section class="secao sobre" id="sobre" aria-labelledby="sobre-titulo">
       <div class="container">
@@ -379,15 +372,18 @@
         </div>
 
         <div class="instagram-chamada">
-          <a class="instagram-handle" href="https://www.instagram.com/weslleymonteiroof/" target="_blank" rel="noopener" data-revelar
-            aria-label="Abrir o perfil @weslleymonteiroof no Instagram (nova aba)">
+          <a class="instagram-handle" href="https://www.instagram.com/weslleymonteiroof/" target="_blank" rel="noopener"
+            data-revelar aria-label="Abrir o perfil @weslleymonteiroof no Instagram (nova aba)">
             <span class="instagram-handle-texto">@weslley<span class="delicada">monteiroof</span></span>
-            <svg class="seta-diagonal" width="40" height="40" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 12 12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+            <svg class="seta-diagonal" width="40" height="40" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M4 12 12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
           </a>
           <div class="instagram-info" data-revelar>
             <p class="legenda">Instagram · <span data-contar="79.4" data-casas="1">79,4</span> mil seguidores</p>
             <p class="texto">Acompanhe ensaios, bastidores e novidades direto no perfil.</p>
-            <a class="botao instagram-botao" href="https://www.instagram.com/weslleymonteiroof/" target="_blank" rel="noopener" data-botao-cortina>
+            <a class="botao instagram-botao" href="https://www.instagram.com/weslleymonteiroof/" target="_blank"
+              rel="noopener" data-botao-cortina>
               Seguir no Instagram
               <svg class="botao-seta" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
                 <path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" />
@@ -401,7 +397,7 @@
     <section class="secao secao--escura numeros" id="numeros" aria-labelledby="numeros-titulo">
       <div class="container">
         <div class="barra-secao" data-revelar>
-          <span>04 / Números e resultados</span>  
+          <span>04 / Números e resultados</span>
         </div>
 
         <h2 class="titulo" data-revelar id="numeros-titulo">Em <span class="delicada">números</span></h2>
@@ -426,12 +422,14 @@
           </div>
         </dl>
 
-        <a class="rotulo numeros-instagram" href="https://www.instagram.com/weslleymonteiroof/" target="_blank" rel="noopener" data-revelar>
-          Conferir no Instagram <svg class="seta-diagonal" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 12 12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+        <a class="rotulo numeros-instagram" href="https://www.instagram.com/weslleymonteiroof/" target="_blank"
+          rel="noopener" data-revelar>
+          Conferir no Instagram <svg class="seta-diagonal" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"
+            focusable="false">
+            <path d="M4 12 12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.5" />
+          </svg>
         </a>
 
-        <!-- <p class="numeros-fonte" data-revelar>Seguidores conferidos no perfil público @weslleymonteiroof em nov/2026.
-          Demais métricas: Instagram Insights, nov/2026.</p> -->
       </div>
     </section>
 
@@ -450,16 +448,21 @@
 
         <ol class="marcas-lista" data-revelar-grupo>
           <li><span class="marcas-num">01</span><span class="marcas-nome">C&amp;A</span><span class="marcas-logo">
-              <img src="assets/img/marcas/cea.png" alt="Logotipo C&amp;A" width="85" height="65" loading="lazy" decoding="async">
+              <img src="assets/logos/cea.png" alt="Logotipo C&amp;A" width="85" height="65" loading="lazy"
+                decoding="async">
             </span></li>
           <li><span class="marcas-num">02</span><span class="marcas-nome">Riachuelo</span><span class="marcas-logo">
-              <img src="assets/img/marcas/riachuelo-site.png" alt="Logotipo Riachuelo" loading="lazy" decoding="async">
+              <img src="assets/logos/riachuelo.png" width="800" height="127" alt="Logotipo Riachuelo" loading="lazy"
+                decoding="async">
             </span></li>
-          <li><span class="marcas-num">03</span><span class="marcas-nome">Don Diego</span><span class="marcas-logo marcas-logo--don-diego">
-              <img src="assets/img/marcas/don-diego-oficial.png" alt="Logotipo Don Diego Style" width="183" height="45" loading="lazy" decoding="async">
+          <li><span class="marcas-num">03</span><span class="marcas-nome">Don Diego</span><span
+              class="marcas-logo marcas-logo--don-diego">
+              <img src="assets/logos/don-diego.png" alt="Logotipo Don Diego Style" width="183" height="45"
+                loading="lazy" decoding="async">
             </span></li>
           <li><span class="marcas-num">04</span><span class="marcas-nome">Pele Bonita</span><span class="marcas-logo">
-              <img src="assets/img/marcas/pelebonita-site.png" alt="Logotipo Pele Bonita" loading="lazy" decoding="async">
+              <img src="assets/logos/pele-bonita.png" width="800" height="213" alt="Logotipo Pele Bonita" loading="lazy"
+                decoding="async">
             </span></li>
         </ol>
       </div>
@@ -477,20 +480,25 @@
         <div class="trabalhos-galeria">
           <figure class="trabalho trabalho-01" data-revelar>
             <video class="trabalho-video" width="720" height="1280" controls playsinline preload="metadata"
-              aria-label="Vídeo da campanha Dom Diego">
-              <source src="assets/video/domdiego/snapinsta-1795225743212.mp4#t=0.001" type="video/mp4">
-              Seu navegador não suporta vídeos. <a href="assets/video/domdiego/snapinsta-1795225743212.mp4">Assistir ao vídeo da Dom Diego</a>.
+              aria-label="Vídeo da campanha Don Diego">
+              <source src="assets/video/don-diego/weslley-monteiro-campanha-don-diego.mp4#t=0.001" type="video/mp4">
+              Seu navegador não suporta vídeos. <a
+                href="assets/video/don-diego/weslley-monteiro-campanha-don-diego.mp4">Assistir ao vídeo da Don
+                Diego</a>.
             </video>
-            <figcaption class="legenda legenda--dupla"><span>01 · Don Diego</span><span>Vídeo de campanha</span></figcaption>
+            <figcaption class="legenda legenda--dupla"><span>01 · Don Diego</span><span>Vídeo de campanha</span>
+            </figcaption>
           </figure>
 
           <figure class="trabalho trabalho-02" data-revelar>
             <video class="trabalho-video" width="720" height="1280" controls playsinline preload="metadata"
               aria-label="Vídeo da campanha C&amp;A">
-              <source src="assets/video/cea/snapinsta-1795225911504.mp4#t=0.001" type="video/mp4">
-              Seu navegador não suporta vídeos. <a href="assets/video/cea/snapinsta-1795225911504.mp4">Assistir ao vídeo da C&amp;A</a>.
+              <source src="assets/video/cea/weslley-monteiro-campanha-cea.mp4#t=0.001" type="video/mp4">
+              Seu navegador não suporta vídeos. <a href="assets/video/cea/weslley-monteiro-campanha-cea.mp4">Assistir ao
+                vídeo da C&amp;A</a>.
             </video>
-            <figcaption class="legenda legenda--dupla"><span>02 · C&amp;A</span><span>Vídeo de campanha</span></figcaption>
+            <figcaption class="legenda legenda--dupla"><span>02 · C&amp;A</span><span>Vídeo de campanha</span>
+            </figcaption>
           </figure>
 
           <p class="frase frase--citacao trabalhos-citacao" data-revelar>Conteúdo pensado para cada marca, <strong>do
@@ -499,26 +507,17 @@
           <figure class="trabalho trabalho-03" data-revelar>
             <video class="trabalho-video" width="720" height="1280" controls playsinline preload="metadata"
               aria-label="Vídeo da campanha Pele Bonita">
-              <source src="assets/video/pelebonita/snapinsta-1795225866563.mp4#t=0.001" type="video/mp4">
-              Seu navegador não suporta vídeos. <a href="assets/video/pelebonita/snapinsta-1795225866563.mp4">Assistir ao vídeo da Pele Bonita</a>.
+              <source src="assets/video/pele-bonita/weslley-monteiro-campanha-pele-bonita.mp4#t=0.001" type="video/mp4">
+              Seu navegador não suporta vídeos. <a
+                href="assets/video/pele-bonita/weslley-monteiro-campanha-pele-bonita.mp4">Assistir ao vídeo da Pele
+                Bonita</a>.
             </video>
-            <figcaption class="legenda legenda--dupla"><span>03 · Pele Bonita</span><span>Vídeo de campanha</span></figcaption>
+            <figcaption class="legenda legenda--dupla"><span>03 · Pele Bonita</span><span>Vídeo de campanha</span>
+            </figcaption>
           </figure>
         </div>
       </div>
     </section>
-
-    <!-- Faixa corrida: trabalhos / contato -->
-    <!-- <div class="marquee marquee--contato">
-      <div class="marquee-trilha">
-        <p class="marquee-grupo rotulo"><span>MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL ·</span><span
-            aria-hidden="true">MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL ·</span><span
-            aria-hidden="true">MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL ·</span></p>
-        <p class="marquee-grupo rotulo" aria-hidden="true"><span>MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL
-            ·</span><span>MODELO · ARTISTA · PARCERIAS COM MARCAS · TODO O BRASIL ·</span><span>MODELO · ARTISTA ·
-            PARCERIAS COM MARCAS · TODO O BRASIL ·</span></p>
-      </div>
-    </div> -->
 
     <section class="secao contato" id="contato" aria-labelledby="contato-titulo">
       <div class="container">
@@ -533,16 +532,19 @@
           <ul class="contato-lista" data-revelar-grupo>
             <li class="contato-item">
               <span class="legenda">Instagram</span>
-              <a class="valor" href="https://www.instagram.com/weslleymonteiroof/" target="_blank"
-                rel="noopener" data-texto="@weslleymonteiroof"><span class="contato-texto">@weslleymonteiroof</span></a>
+              <a class="valor" href="https://www.instagram.com/weslleymonteiroof/" target="_blank" rel="noopener"
+                data-texto="@weslleymonteiroof"><span class="contato-texto">@weslleymonteiroof</span></a>
             </li>
             <li class="contato-item">
               <span class="legenda">WhatsApp</span>
-              <a class="valor" href="https://wa.me/5582999196924" target="_blank" rel="noopener" data-texto="+55 (82) 99919-6924"><span class="contato-texto">+55 (82) 99919-6924</span></a>
+              <a class="valor" href="https://wa.me/5582999196924" target="_blank" rel="noopener"
+                data-texto="+55 (82) 99919-6924"><span class="contato-texto">+55 (82) 99919-6924</span></a>
             </li>
             <li class="contato-item">
               <span class="legenda">E-mail</span>
-              <a class="valor" href="mailto:wesleymonteiroo.2000@gmail.com" data-texto="wesleymonteiroo.2000@gmail.com"><span class="contato-texto">wesleymonteiroo.2000@gmail.com</span></a>
+              <a class="valor" href="mailto:wesleymonteiroo.2000@gmail.com"
+                data-texto="wesleymonteiroo.2000@gmail.com"><span
+                  class="contato-texto">wesleymonteiroo.2000@gmail.com</span></a>
             </li>
           </ul>
 
@@ -568,7 +570,9 @@
 
   <a class="voltar-topo" href="#capa" data-botao-cortina>
     <span class="visualmente-oculto">Voltar ao topo</span>
-    <svg class="voltar-topo-seta" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 15V2M3 7l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    <svg class="voltar-topo-seta" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M8 15V2M3 7l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.5" />
+    </svg>
   </a>
 </body>
 

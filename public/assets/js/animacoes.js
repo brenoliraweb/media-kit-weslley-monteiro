@@ -3,15 +3,12 @@
 
   var raiz = document.documentElement;
   raiz.classList.add('js');
-  window.animacoesProntas = true;
 
   var movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var temObserver = 'IntersectionObserver' in window;
 
-  /* Revelar ao rolar, cortina e contagem
-     ======================================================================== */
+  /* Revelar ao rolar, cortina e contagem */
 
-  // Índice de cada item em sequência, usado no atraso do CSS
   document.querySelectorAll('[data-revelar-grupo]').forEach(function (grupo) {
     Array.prototype.forEach.call(grupo.children, function (item, i) {
       item.style.setProperty('--i', i);
@@ -96,8 +93,7 @@
     alvos.forEach(function (el) { observer.observe(el); });
   }
 
-  /* Cortina dos botões: cópia decorativa do conteúdo, com as cores invertidas pelo CSS
-     ======================================================================== */
+  /* Cortina dos botões: cópia decorativa do conteúdo, com as cores invertidas pelo CSS */
 
   document.querySelectorAll('[data-botao-cortina]').forEach(function (botao) {
     var cortina = document.createElement('span');
@@ -108,8 +104,7 @@
     botao.appendChild(cortina);
   });
 
-  /* Menu que reage à rolagem e indicador de progresso
-     ======================================================================== */
+  /* Menu que reage à rolagem e indicador de progresso */
 
   var topo = document.querySelector('.topo');
   var voltarTopo = document.querySelector('.voltar-topo');
@@ -129,7 +124,6 @@
     var fracao = maximo > 0 ? Math.min(Math.max(y / maximo, 0), 1) : 0;
     progresso.style.transform = 'scaleX(' + fracao + ')';
 
-    // Botão "voltar ao topo" só aparece depois da primeira tela
     if (voltarTopo) voltarTopo.classList.toggle('voltar-topo--visivel', y > window.innerHeight);
 
     if (!topo) return;
@@ -140,7 +134,7 @@
     var delta = y - ultimoY;
     if (Math.abs(delta) < 6) return;
 
-    // Some ao descer e volta ao subir; nunca some com o foco dentro dele
+    // Mantém o menu visível enquanto houver foco de teclado dentro dele.
     var ocultar = delta > 0 && y > topo.offsetHeight * 2 && !topo.contains(document.activeElement);
     topo.classList.toggle('topo--oculto', ocultar);
     ultimoY = y;
@@ -162,4 +156,5 @@
   }
 
   atualizar();
+  window.animacoesProntas = true;
 })();
