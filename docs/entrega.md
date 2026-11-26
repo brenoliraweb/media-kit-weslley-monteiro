@@ -20,7 +20,7 @@ Reorganização do repositório realizada em 25/11/2026. O escopo foi a estrutur
 
 - Confirmar a medida de **tórax**, atualmente `00` no HTML. Não foi substituída por um valor presumido.
 - Confirmar com o cliente idade, demais medidas, métricas, campanhas, WhatsApp e e-mail. A presença desses dados no código não comprova sua aprovação ou atualização.
-- Domínio definitivo informado: `https://weslleymonteiroof.com.br/`. As URLs de SEO foram atualizadas; falta vincular o domínio ao projeto da Vercel e configurar os registros DNS exibidos no painel.
+- Endereço atual de produção: `https://weslleymonteiro.vercel.app/`. As URLs de SEO usam esse endereço, sem redirecionamentos. O domínio `weslleymonteiroof.com.br` ainda não foi comprado e será configurado somente depois da compra e da validação do DNS e HTTPS.
 - Confirmar os créditos de fotografia a exibir. Não há crédito publicado no HTML atual.
 
 ## Verificação final no navegador

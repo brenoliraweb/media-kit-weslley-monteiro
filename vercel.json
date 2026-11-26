@@ -6,20 +6,6 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.weslleymonteiroof.com.br" }],
-      "destination": "https://weslleymonteiroof.com.br/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "weslleymonteiro.vercel.app" }],
-      "destination": "https://weslleymonteiroof.com.br/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",

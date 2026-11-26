@@ -57,7 +57,7 @@ Abra `http://127.0.0.1:8000`. Encerre com `Ctrl+C`. Use um servidor HTTP para te
 
 ## Publicação
 
-O destino de hospedagem é a Vercel e o domínio principal é **https://weslleymonteiroof.com.br/**, sem `www`.
+O destino de hospedagem é a Vercel e o endereço atual de produção é **https://weslleymonteiro.vercel.app/**.
 
 Importe este repositório no projeto da Vercel e mantenha **Root Directory** na raiz do repositório, onde está `vercel.json`. A configuração versionada define:
 
@@ -68,17 +68,16 @@ Importe este repositório no projeto da Vercel e mantenha **Root Directory** na 
 
 Somente o conteúdo de `public` será servido. Os documentos e arquivos de origem em `docs` ficam fora da saída publicada. A `.vercelignore` também exclui esses materiais do envio pela CLI. Não selecione `public` como Root Directory: essa opção deixaria o `vercel.json` fora da raiz do projeto.
 
-As URLs de canonical, Open Graph, Twitter, JSON-LD, robots e sitemap usam o domínio oficial. O `vercel.json` prepara redirecionamentos permanentes (308) de `www.weslleymonteiroof.com.br` e `weslleymonteiro.vercel.app` para o domínio principal, mantendo os caminhos. URLs de preview da Vercel continuam disponíveis sem esse redirecionamento.
+As URLs de canonical, Open Graph, Twitter, JSON-LD, robots e sitemap usam `https://weslleymonteiro.vercel.app/`. Não há redirecionamentos para domínio personalizado. O site e seus arquivos são servidos diretamente pela Vercel.
 
-### Domínio e DNS
+### Domínio personalizado futuro
 
-1. No projeto da Vercel, abra **Settings → Domains** e adicione `weslleymonteiroof.com.br` e `www.weslleymonteiroof.com.br` ao ambiente de produção.
-2. Mantenha `weslleymonteiroof.com.br` como destino principal. Caso a Vercel ofereça um redirecionamento automático do domínio principal para `www`, escolha a opção sem esse redirecionamento para evitar conflito com a configuração do repositório.
-3. No provedor que administra o DNS do domínio, crie os registros indicados pela Vercel: normalmente um **A** para a raiz (`@`) e um **CNAME** para `www`. Copie os destinos exatos exibidos pelo projeto; não use um IP ou CNAME genérico. Se houver exigência de comprovação de propriedade, adicione também o TXT informado.
-4. Aguarde a validação do DNS e do certificado HTTPS no painel antes de divulgar o endereço. A preparação dos arquivos não vincula o domínio nem altera o DNS automaticamente.
+O domínio `weslleymonteiroof.com.br` ainda não foi comprado e não faz parte da configuração ativa. O site funciona pelo endereço da Vercel sem depender dessa compra.
+
+Depois da compra, vincule o domínio ao projeto, configure os registros DNS indicados pela Vercel e valide o HTTPS. Só então atualize as URLs em `public/index.html`, `public/robots.txt` e `public/sitemap.xml` e avalie adicionar redirecionamentos. Antecipar o redirecionamento impede que estilos e mídias carreguem enquanto o novo domínio estiver indisponível.
 
 Referências oficiais: [configuração de builds e diretório de saída](https://vercel.com/docs/builds/configure-a-build), [configuração estática e redirecionamentos](https://vercel.com/docs/project-configuration/vercel-json) e [domínio personalizado e DNS](https://vercel.com/docs/domains/set-up-custom-domain).
 
-Após o deploy, confira a página inicial, as mídias, `/robots.txt`, `/sitemap.xml`, `/site.webmanifest`, o HTTPS e os redirecionamentos de `www` e do endereço antigo. `/docs/`, `/README.md` e `/CLAUDE.md` devem retornar 404. A revisão visual no navegador continua pendente da etapa anterior.
+Após o deploy, confira a página inicial, as mídias, `/robots.txt`, `/sitemap.xml` e `/site.webmanifest` no endereço da Vercel. Se o navegador tiver guardado os redirecionamentos permanentes da configuração anterior, confira em uma janela anônima ou limpe o cache. `/docs/`, `/README.md` e `/CLAUDE.md` devem retornar 404. A revisão visual no navegador continua pendente da etapa anterior.
 
 Antes do uso oficial, confirme os dados do cliente, especialmente a medida de tórax ainda preenchida como `00` e os créditos das fotografias. Confira também a aparência em desktop e celular, a navegação por teclado, os vídeos, os contatos e o conteúdo sem JavaScript e com movimento reduzido.
